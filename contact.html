@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sage rosabell - contact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: auto;
+            font-family: 'Georgia', serif;
+        }
+
+        body {
+            background-color: #a4c4e8;
+            color: #1a2d3d;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23c2d9f0"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23aecce8" stroke-width="1.5"/><circle cx="50" cy="50" r="30" stroke="%23aecce8" stroke-width="1" fill="none"/></svg>');
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background-color: #b5d0f0;
+            border: 1px solid #7aabd4;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #2e5478;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #4a7fa5;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        nav {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        nav a {
+            display: block;
+            padding: 12px 25px;
+            background-color: #b5d0f0;
+            color: #1a4d7a;
+            text-decoration: none;
+            border: 1px solid #7aabd4;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #c8e0f7;
+            color: #0d3a6b;
+        }
+
+        nav a.active {
+            background-color: #7aabd4;
+            color: #fff;
+        }
+
+        .marquee {
+            background: #b5d0f0;
+            color: #1a4d7a;
+            padding: 8px;
+            margin: 0 0 25px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            animation: scroll 22s linear infinite;
+            font-weight: 500;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .box {
+            background-color: #c2daf5;
+            border: 1px solid #7aabd4;
+            padding: 24px;
+            box-shadow: 0 4px 14px rgba(30, 77, 112, 0.12);
+        }
+
+        .box h2 {
+            color: #2e5478;
+            border-bottom: 1px solid #9dc3e6;
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            font-family: 'Times New Roman', serif;
+            font-weight: normal;
+            font-size: 1.5em;
+        }
+
+        .box p {
+            margin-bottom: 12px;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .box ul {
+            margin-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .box li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .box--greeting    { grid-column: 1 / 3; }
+        .box--email       { grid-column: 3; }
+        .box--social      { grid-column: 1; transform: rotate(-0.6deg); }
+        .box--professional{ grid-column: 2; }
+        .box--availability{ grid-column: 3; transform: rotate(0.5deg); }
+        .box--response    { grid-column: 1; transform: rotate(-0.4deg); }
+        .box--form        { grid-column: 2 / 4; }
+        .box--rules       { grid-column: 1 / 4; background-color: #afc9e6; }
+
+        /* all box rules for to uhhhh make it super easy!! also img frame. i imagine it's pretty good to remember where these two are in case of future updates!! */
+        .img-frame {
+            background: #aecde8;
+            border: 1px solid #7aabd4;
+            padding: 10px;
+            box-shadow: 0 8px 18px rgba(30, 77, 112, 0.15);
+            margin-bottom: 16px;
+        }
+
+        .img-frame img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #9dc3e6;
+            background: #e6f1fb;
+        }
+
+        .img-frame figcaption {
+            margin-top: 8px;
+            font-size: 0.82em;
+            line-height: 1.35;
+            text-align: center;
+            color: #2e5478;
+        }
+
+        .img-frame--left  { transform: rotate(-2deg); }
+        .img-frame--right { transform: rotate(2deg); }
+
+        .contact-link {
+            color: #2e5478;
+            text-decoration: underline;
+        }
+
+        .contact-link:hover {
+            color: #4a7fa5;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #2e5478;
+            font-size: 0.95em;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 16px;
+            border: 1px solid #7aabd4;
+            background-color: #d6e9f8;
+            font-family: 'Georgia', serif;
+            font-size: 1em;
+            color: #1a2d3d;
+        }
+
+        input:focus, textarea:focus {
+            outline: 1px solid #4a7fa5;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4a7fa5;
+            color: #fff;
+            border: none;
+            padding: 10px 28px;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 1.05em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2e5478;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #5a9fd4, transparent);
+            margin: 14px 0;
+        }
+
+        .terminal {
+            background-color: #0f1a24;
+            color: #b8d4e8;
+            padding: 18px;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #2e5478;
+            margin-top: 18px;
+        }
+
+        .terminal p {
+            margin-bottom: 6px;
+            font-size: 0.92em;
+        }
+
+        .terminal p:last-child {
+            margin-bottom: 0;
+        }
+
+        .prompt {
+            color: #7ec8e3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #b5d0f0;
+            border: 1px solid #7aabd4;
+            color: #2e5478;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter {
+            font-family: 'Courier New', monospace;
+            background-color: #0f1a24;
+            color: #b8d4e8;
+            padding: 8px 15px;
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.9em;
+        }
+
+        html::before {
+            content: "";
+            display: inline-flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(180, 210, 235, 0.4) 66%, rgba(73, 140, 210, 0.25) 33%);
+            background-size: 100% 3px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: scanlines-anim 0.7s linear infinite;
+        }
+
+        @keyframes scanlines-anim {
+            0%   { background-position: 0px 0px; }
+            100% { background-position: 0px 9px; }
+        }
+
+        @media (max-width: 700px) {
+            .bento-grid { grid-template-columns: 1fr 1fr; }
+
+            .box--greeting     { grid-column: 1 / 3; }
+            .box--email        { grid-column: 1 / 3; }
+            .box--social       { grid-column: 1; transform: none; }
+            .box--professional { grid-column: 2; }
+            .box--availability { grid-column: 1 / 3; transform: none; }
+            .box--response     { grid-column: 1 / 3; transform: none; }
+            .box--form         { grid-column: 1 / 3; }
+            .box--rules        { grid-column: 1 / 3; }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+
+            .bento-grid { grid-template-columns: 1fr; }
+
+            .box--greeting, .box--email, .box--social,
+            .box--professional, .box--availability, .box--response,
+            .box--form, .box--rules {
+                grid-column: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>sage rosabell</h1>
+        <p class="subtitle">a personal webspace for portfolio work and professional endeavor</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="writings.html">Writings</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="archive.html">Archive</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="marquee">
+        <div class="marquee-text">reach out any time • response times may vary • please read the guidelines below before writing • thank you for getting in touch</div>
+    </div>
+
+    <div class="bento-grid">
+
+        <div class="box box--greeting">
+            <h2>get in touch</h2>
+            <p>the best way to reach me is via email. i try to reply to everything eventually. if you're a recruiter, please read the availability section before reaching out.</p>
+            <p>responses are generally t houghtful rather than fast. plea se don't send multiple follow-ups if i haven't replied yet.</p>
+        </div>
+
+        <div class="box box--email">
+            <h2>email</h2>
+            <p><a href="mailto:oplandsage@gmail.com" class="contact-link">oplandsage@gmail.com</a></p>
+            <div class="divider"></div>
+            <p style="font-size:0.9em; color:#4a7fa5;">preferred for most things.</p>
+        </div>
+
+        <div class="box box--social">
+            <h2>socials</h2>
+            <ul>
+                <li><a href="#" class="haven't made a new one yet.. sorry  i have bpd!!">discord</a></li>
+                <li><a href="https://sagerosabell.neocities.org/">neocities</a></li>
+                <li><a href="#" class="contact-link">secret third thing.......</a></li>
+            </ul>
+        </div>
+
+        <div class="box box--professional">
+            <h2>professional</h2>
+            <ul>
+                <li><a href="https://github.com/chevalier-security">github</a></li>
+                <li><a href="https://www.linkedin.com/in/sage-taylor-270546347/">linkedin</a></li>
+                <li><a href="https://chevalier-security.github.io/portfolio/">portfolio (not creative)</a></li>
+            </ul>
+        </div>
+
+        <div class="box box--availability">
+            <h2>availability</h2>
+            <p>timezone: utc−5</p>
+            <div class="divider"></div>
+            <p>open to freelance and collaborations.</p>
+        </div>
+
+        <div class="box box--response">
+            <h2>response time</h2>
+            <p>usually within a few days. sometimes longer.</p>
+            <p>i do not use discord for professional contact.</p>
+        </div>
+
+        <div class="box box--form">
+            <h2>send a message</h2>
+            <form action="https://formspree.io/f/xdawzabv" method="post">
+                <label for="name">name</label>
+                <input type="text" id="name" name="name" autocomplete="off">
+                <label for="email">email</label>
+                <input type="email" id="email" name="email" autocomplete="off">
+                <label for="message">message</label>
+                <textarea id="message" name="message"></textarea>
+                <button type="submit">send</button>
+            </form>
+        </div>
+
+        <div class="box box--rules">
+            <h2>please do not contact me about</h2>
+            <ul>
+                <li>unsolicited recruitment for roles that don't have anything to do with web development, security engineering, or related fields. thx</li>
+                <li>unpaid or spec work</li>
+                <li>ai training data collection or scraping requests</li>
+                <li>anything mean,, please be nice to me</li>
+            </ul>
+            <div class="terminal">
+                <p><span class="prompt">$</span> echo "thank you for visiting."</p>
+                <p><span class="prompt">$</span> _</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>this website respects your privacy and does not track your activity.</p>
+        <div class="counter">Visitors: 1842</div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const prompts = document.querySelectorAll('.prompt');
+            prompts.forEach(prompt => {
+                prompt.parentNode.addEventListener('click', function() {
+                    this.innerHTML = '<span class="prompt">$</span> echo "love, , always."<br><span class="prompt">$</span> _';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

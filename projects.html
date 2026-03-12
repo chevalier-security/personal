@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sage rosabell - projects</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: auto;
+      font-family: "Georgia", serif;
+    }
+
+    body {
+      background-color: #cab5ef;
+      color: #2e2147;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23e2d6fb"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23d3c2f7" stroke-width="1.5"/><circle cx="50" cy="50" r="30" stroke="%23d3c2f7" stroke-width="1" fill="none"/></svg>');
+      background-attachment: fixed;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px 20px;
+      background-color: #d9caf7;
+      border: 1px solid #9b82cf;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #4f3a7b;
+      font-weight: normal;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      font-family: "Times New Roman", serif;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #7558ad;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    nav {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    nav a {
+      display: block;
+      padding: 12px 25px;
+      background-color: #d9caf7;
+      color: #3f2b67;
+      text-decoration: none;
+      border: 1px solid #9b82cf;
+      font-size: 1.1em;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #e7defb;
+      color: #2d1d4d;
+    }
+
+    nav a.active {
+      background-color: #9b82cf;
+      color: #ffffff;
+    }
+
+    .marquee {
+      background: #d9caf7;
+      color: #4f3a7b;
+      padding: 8px;
+      margin: 0 0 25px;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      animation: scroll 22s linear infinite;
+      font-weight: 500;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    main {
+      background-color: #e3d7f8;
+      padding: 30px;
+      border: 1px solid #9b82cf;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .intro {
+      margin-bottom: 26px;
+    }
+
+    .intro h2 {
+      color: #5e4690;
+      border-bottom: 1px solid #c9b6ec;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      font-family: "Times New Roman", serif;
+      font-weight: normal;
+      font-size: 1.8em;
+    }
+
+    .intro p {
+      margin-bottom: 0;
+      font-size: 1.05em;
+      line-height: 1.7;
+    }
+
+    .project-layout {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+      margin-bottom: 72px;
+    }
+
+    .project-box {
+      background: #f2ecff;
+      border: 1px solid #9b82cf;
+      padding: 20px;
+      box-shadow: 0 8px 18px rgba(79, 58, 123, 0.15);
+    }
+
+    .project-box h3 {
+      color: #4f3a7b;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      font-family: "Times New Roman", serif;
+      font-weight: normal;
+    }
+
+    .project-box p {
+      margin-bottom: 10px;
+      color: #3f2b67;
+      font-size: 0.98em;
+    }
+
+    .project-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-box ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    .project-box li {
+      margin-bottom: 7px;
+      color: #5f4b89;
+      font-size: 0.95em;
+    }
+
+    .box-a {
+      grid-column: 1 / 4;
+      transform: rotate(-0.7deg);
+    }
+
+    .box-b {
+      grid-column: 4 / 7;
+      transform: rotate(0.6deg);
+    }
+
+    .box-c {
+      grid-column: 2 / 5;
+      transform: rotate(-0.4deg);
+    }
+
+    .box-d {
+      grid-column: 3 / 7;
+      transform: rotate(0.8deg);
+    }
+
+    .postcard {
+      width: clamp(220px, 30vw, 320px);
+      margin: -128px -8px 0 auto;
+      padding: 10px;
+      background: #efe7ff;
+      border: 1px solid #9b82cf;
+      box-shadow: 0 16px 30px rgba(79, 58, 123, 0.24);
+      transform-origin: top right;
+      transform: rotate(3deg);
+      position: relative;
+      z-index: 5;
+    }
+
+    .postcard img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #c9b6ec;
+      background: #faf7ff;
+    }
+
+    .postcard figcaption {
+      margin-top: 8px;
+      font-size: 0.82em;
+      line-height: 1.35;
+      text-align: center;
+      color: #634b96;
+    }
+
+    .marquee-note {
+      margin-top: 8px;
+      color: #6f58a1;
+      font-size: 0.9em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #d9caf7;
+      border: 1px solid #9b82cf;
+      color: #4f3a7b;
+      position: relative;
+      z-index: 1;
+    }
+
+    .counter {
+      font-family: "Courier New", monospace;
+      background-color: #2a1e42;
+      color: #d9caf7;
+      padding: 8px 15px;
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.9em;
+    }
+
+    html::before {
+      content: "";
+      display: inline-flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(221, 212, 245, 0.45) 66%, rgba(144, 112, 215, 0.3) 33%);
+      background-size: 100% 3px;
+      z-index: 9999;
+      pointer-events: none;
+      animation: scanlines-anim 0.7s linear infinite;
+    }
+
+    @keyframes scanlines-anim {
+      0% { background-position: 0px 0px; }
+      100% { background-position: 0px 9px; }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 12px;
+      }
+
+      main {
+        padding: 24px;
+      }
+
+      .project-layout {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .box-a,
+      .box-b,
+      .box-c,
+      .box-d {
+        grid-column: auto;
+        transform: none;
+      }
+
+      .postcard {
+        margin: 22px auto 0;
+        transform: rotate(1deg);
+        z-index: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>sage rosabell</h1>
+    <p class="subtitle">a personal webspace for portfolio work and professional endeavor</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="writings.html">Writings</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="archive.html">Archive</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="marquee">
+    <div class="marquee-text">project log • software, design, and writing tools • some active, some archived • all built by sage rosabell</div>
+  </div>
+
+  <main>
+    <section class="intro">
+      <h2>my stuff</h2>
+      <p>below is a selection of projects ranging from practical utilities to personal experiments. each one reflects a specific phase of my learning and process.</p>
+      <p class="marquee-note">check out my links and my github repos for each! !</p>
+    </section>
+
+    <section class="project-layout">
+      <article class="project-box box-a">
+        <h3>access control system</h3>
+        <p>this is my forever project. kinda like how in some ways ffxiv is my forever game. it's fun! i get to really experiment with programming and use everything i want to for this project.. frontend, backend, api stuff, cloud stuff and containers. . ruby and javascript.</p>
+        <ul>
+          <li>really epic stuff:</li>
+          <li>fully scalable so far.. i can use more api and cloud things to sort of add whatever i want to the backennd.. it m;ight kill me to do a ton of low level stuff with the hardware integration, but hey that's life.</li>
+          <li>integration with various apis and cloud services</li>
+        </ul>
+      </article>
+
+      <article class="project-box box-b">
+        <h3>weekly planner</h3>
+        <p>a lightweight planning board so that my life doesn't become a complete mess. .</p>
+        <ul>
+          <li>simple semantic coding.. nothing impressive, but it helps me to not hate myself!!</li>
+          <li>notes for project milestones, and personal goals</li>
+          <li>easy and portable. mobile friendly</li>
+        </ul>
+      </article>
+
+      <article class="project-box box-c">
+        <h3>finance tracker</h3>
+        <p>personal finance tracker that uses apis and stuff to connect to my bank and help me plan out my spending months in advance.</p>
+        <ul>
+          <li>automated handling of my spending habits. it calculates easily how much i have left and it plans out my budget based on that.</li>
+          <li>not super portable, but it is pretty..</li>
+          <li>soon i'll push it to git. give me like a day or two.</li>
+        </ul>
+      </article>
+    </section>
+
+    <figure class="postcard">
+      <img src="./sourceorwhatever/ffxivoldforpostcards/pleasedon'tgoaway.png" alt="please don't go away">
+      <figcaption>with love</figcaption>
+    </figure>
+  </main>
+
+  <footer>
+    <p>this website respects your privacy and does not track your activity.</p>
+    <div class="counter">Visitors: 1842</div>
+  </footer>
+</body>
+</html>

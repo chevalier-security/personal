@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>sage rosabell - master site</title>
+   <style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+      
+       html, body {
+           height: 100%;
+           overflow: auto;
+           font-family: 'Georgia', serif;
+       }
+      
+       body {
+           background-color: #141414;
+           color: #d4d4d4;
+           line-height: 1.6;
+           padding: 20px;
+           max-width: 900px;
+           margin: 0 auto;
+           position: relative;
+         }
+      
+       header {
+           text-align: center;
+           margin-bottom: 40px;
+           padding: 30px 20px;
+           background-color: #1e1e1e;
+           border: 1px solid #333333;
+           position: relative;
+           z-index: 1;
+       }
+      
+       h1 {
+           font-size: 2.8em;
+           color: #e0e0e0;
+           font-weight: normal;
+           letter-spacing: 1px;
+           margin-bottom: 10px;
+           font-family: 'Times New Roman', serif;
+       }
+      
+       .subtitle {
+           font-style: italic;
+           color: #888888;
+           font-size: 1.2em;
+           margin-top: 10px;
+       }
+      
+       nav {
+           text-align: center;
+           margin-bottom: 40px;
+           position: relative;
+           z-index: 1;
+       }
+      
+       nav ul {
+           list-style: none;
+           display: flex;
+           justify-content: center;
+           flex-wrap: wrap;
+           gap: 5px;
+       }
+      
+       nav a {
+           display: block;
+           padding: 12px 25px;
+           background-color: #1e1e1e;
+           color: #c0c0c0;
+           text-decoration: none;
+           border: 1px solid #333333;
+           font-size: 1.1em;
+           transition: all 0.3s;
+       }
+      
+       nav a:hover {
+           background-color: #2a2a2a;
+           color: #e8e8e8;
+       }
+
+       main {
+           background-color: #1a1a1a;
+           padding: 40px;
+           border: 1px solid #333333;
+           margin-bottom: 40px;
+           position: relative;
+           z-index: 1;
+           box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+       }
+      
+       h2 {
+           color: #cccccc;
+           border-bottom: 1px solid #333333;
+           padding-bottom: 15px;
+           margin-bottom: 25px;
+           font-family: 'Times New Roman', serif;
+           font-weight: normal;
+           font-size: 1.8em;
+       }
+      
+       p {
+           margin-bottom: 20px;
+           font-size: 1.1em;
+           line-height: 1.7;
+       }
+      
+       ul, ol {
+           margin-left: 25px;
+           margin-bottom: 25px;
+       }
+      
+       li {
+           margin-bottom: 10px;
+           line-height: 1.6;
+       }
+      
+       form {
+           background-color: #1e1e1e;
+           padding: 30px;
+           border: 1px solid #333333;
+           margin-top: 40px;
+           position: relative;
+           z-index: 1;
+       }
+      
+       fieldset {
+           border: 1px solid #333333;
+           padding: 20px;
+           margin-bottom: 20px;
+       }
+      
+       legend {
+           font-weight: bold;
+           color: #888888;
+           padding: 0 15px;
+           font-size: 1.2em;
+       }
+      
+       label {
+           display: block;
+           margin-bottom: 8px;
+           color: #888888;
+       }
+      
+       input, textarea {
+           width: 100%;
+           padding: 12px;
+           margin-bottom: 20px;
+           border: 1px solid #333333;
+           background-color: #252525;
+           color: #d4d4d4;
+           font-family: 'Georgia', serif;
+           font-size: 1em;
+       }
+      
+       textarea {
+           min-height: 150px;
+       }
+      
+       button {
+           background-color: #333333;
+           color: #e0e0e0;
+           border: none;
+           padding: 12px 30px;
+           cursor: pointer;
+           font-family: 'Georgia', serif;
+           font-size: 1.1em;
+           transition: background-color 0.3s;
+       }
+      
+       button:hover {
+           background-color: #4a4a4a;
+       }
+      
+       footer {
+           text-align: center;
+           padding: 30px;
+           background-color: #1e1e1e;
+           border: 1px solid #333333;
+           color: #888888;
+           position: relative;
+           z-index: 1;
+           margin-top: 40px;
+       }
+
+
+       .marquee {
+           background: #1e1e1e;
+           color: #999999;
+           padding: 8px;
+           margin: 25px 0;
+           border-radius: 4px;
+           overflow: hidden;
+           white-space: nowrap;
+       }
+      
+       .marquee-text {
+           display: inline-block;
+           animation: scroll 20s linear infinite;
+           font-weight: 500;
+       }
+
+
+       @keyframes scroll {
+           0% { transform: translateX(100%); }
+           100% { transform: translateX(-100%); }
+       }
+      
+       .divider {
+           height: 1px;
+           background: linear-gradient(to right, transparent, #555555, transparent);
+           margin: 40px 0;
+       }
+      
+       .quote {
+           border-left: 3px solid #555555;
+           padding-left: 20px;
+           margin: 30px 0;
+           font-style: italic;
+           color: #888888;
+       }
+      
+       .author {
+           text-align: right;
+           font-style: normal;
+           margin-top: 10px;
+           font-size: 0.9em;
+       }
+      
+       .terminal {
+           background-color: #0d0d0d;
+           color: #c8c8c8;
+           padding: 20px;
+           margin: 30px 0;
+           font-family: 'Courier New', monospace;
+           border: 2px solid #333333;
+       }
+      
+       .prompt {
+           color: #8ccf7e;
+       }
+      
+       .counter {
+           font-family: 'Courier New', monospace;
+           background-color: #0d0d0d;
+           color: #c8c8c8;
+           padding: 8px 15px;
+           display: inline-block;
+           margin-top: 15px;
+           font-size: 0.9em;
+       }
+
+     html::before{ 
+    content: "";
+    display: inline-flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(20, 20, 20, 0) 66%, rgba(0, 0, 0, 0.20) 33%);
+    background-size: 100% 3px;
+    z-index: 9999;
+    pointer-events: none;
+    
+    animation: scanlines-anim 0.7s linear infinite;
+  }
+  
+  @keyframes scanlines-anim{
+    0% {
+    background-position: 0px 0px;
+  }
+  100% {
+        background-position: 0px 9px;
+  }
+}
+
+   </style>
+</head>
+<body class="crt scanlines">
+   <header>
+       <h1>sage rosabell</h1>
+       <p class="subtitle">a personal webspace for portfolio work and professional endeavor</p>
+   </header>
+  
+   <nav>
+       <ul>
+           <li><a href="index.html">Home</a></li>
+           <li><a href="writings.html">Writings</a></li>
+           <li><a href="projects.html">Projects</a></li>
+           <li><a href="archive.html">Archive</a></li>
+           <li><a href="contact.html">Contact</a></li>
+       </ul>
+   </nav>
+
+
+   <div class="marquee">
+           <div class="marquee-text">welcome to my archive page • thanks for visiting • don't forget to check out my contact page</div>
+       </div>
+
+
+   <main>
+       <section>
+           <h2>rest in peace..</h2>
+       </section>
+      
+       <div class="divider"></div>
+      
+       <section>
+           </ul>
+       </section>
+      
+       <div class="divider"></div>
+      
+       <section>
+       </section>
+   </main>`
+   <footer>
+       <p>this website respects your privacy and does not track your activity.</p>
+       <div class="counter">Visitors: 1842</div>
+   </footer>
+
+
+   <script>
+       // Set current year for copyright
+       document.getElementById('current-year').textContent = new Date().getFullYear();
+      
+       // Simple text effect for the terminal
+       document.addEventListener('DOMContentLoaded', function() {
+           const prompts = document.querySelectorAll('.prompt');
+           prompts.forEach(prompt => {
+               prompt.parentNode.addEventListener('click', function() {
+                   this.innerHTML = '<span class="prompt">$</span> echo "Thank you for visiting."<br><span class="prompt">$</span> _';
+               });
+           });
+       });
+   </script>
+</body>
+</html>
+
